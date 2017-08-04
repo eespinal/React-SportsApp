@@ -1,28 +1,19 @@
-import React from 'react';
-import '../Styles/App.css';
-
-const App = () => (
-    <div className="App">
-      <div className="App-header">
-        <h2>Welcome to the nba show</h2>
+import React  from 'react';
+import NavBar from './NavBar';
+import TeamsApp from './TeamsApp';
+import HomePageApp from './HomePageApp';
+import TeamProfile from './TeamProfile';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+const App = ()=>(
+    <BrowserRouter>
+      <div>
+          <div className="navContent">
+            <NavBar />
+            <TeamsApp />
+          </div>
+          <Route path="/" component={HomePageApp} exact />
+          <Route path="/team/:id" component={TeamProfile} exact />
       </div>
-    </div>
+    </BrowserRouter>
 )
-
-
-//react long Way
-
-// import React, { Component } from 'react';
-//    class App extends Component {
-//      render() {
-//        return (
-//          <div className="App">
-//            <div className="App-header">
-//              <h2>Welcome to the nba show</h2>
-//            </div>
-//          </div>
-//        );
-//   }
-// }
-
 export default App;
