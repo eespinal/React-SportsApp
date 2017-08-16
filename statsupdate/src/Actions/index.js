@@ -13,14 +13,12 @@ const nbaApi = (dispatch, searchString) =>{
   if (player) {
     let playerId = player.playerId
     NBA.stats.playerInfo({PlayerID: playerId}).then(function(data){
-      console.log(data)
       dispatch(showPlayerSearchResult(playerId, data.commonPlayerInfo[0], data.playerHeadlineStats[0]))
     })
   }
 }
 
 export const searchForTeam = (dispatch) => {
-  // NBA.stats.commonTeamRoster({TeamID:'1610612738'}).then(function(res){console.log("RS",res)})
   NBA.stats.teamStats().then(function(resp){
     dispatch(showTeamSearchResult(resp))
   })
@@ -57,21 +55,53 @@ export const removePlayer= (playerId)=> ({
   type:REMOVE_PLAYER,
   playerId
 })
+
 const nbaRosterList = (dispatch,team) => {
-  NBA.stats.commonTeamRoster({TeamID:team}).then(
-    function(roster){
-      console.log("RS",roster)
-      dispatch(showPlayerList(roster))
+  const playerArr = (arrOfIds) => {
+    let statsPromises = arrOfIds.map( item => NBA.stats.playerInfo({PlayerID: item}))
+    return statsPromises;
+  }
+    let dataContainer = []
+  const objArr = data => {
+    data.forEach(item =>{ let obj = {id:item.commonPlayerInfo[0].personId,info:item.commonPlayerInfo[0],stats:item.playerHeadlineStats[0]}
+      dataContainer.push(obj)
+    })
+  }
+  NBA.stats.commonTeamRoster({TeamID: team}).then(function(roster){
+      const playerIds = roster.commonTeamRoster.map(player => player.playerId);
+      Promise.all(playerArr(playerIds)).then(data =>{
+        objArr(data)
+        dispatch(showPlayerList(dataContainer.slice(0,5)))})
   })
 }
+
 export const loadPlayerList  = (dispatch,teamId) => {
-  nbaRosterList(teamId)
+  nbaRosterList(dispatch,teamId)
   return({
-    type:LOAD_PLAYER_LIST,
-    teamId
+    type:LOAD_PLAYER_LIST
   })
 }
-export const showPlayerList = (teamRoster) => ({
-  type:SHOW_PLAYER_LIST,
-  teamRoster
-})
+export const showPlayerList = (data) =>{
+  return({
+    type:SHOW_PLAYER_LIST,
+    data
+  })
+}
+
+// const nbaRosterList = (dispatch,team) => {
+//   const playerArr = (arrOfIds) => {
+//     let statsPromises = arrOfIds.map( item => NBA.stats.playerInfo({PlayerID: item}))
+//     return statsPromises;
+//   }
+//     let dataContainer = []
+//   const objArr = data => {
+//     data.forEach(item =>{ let obj = {id:item.commonPlayerInfo[0].personId,info:item.commonPlayerInfo[0],stats:item.playerHeadlineStats[0]}
+//       dataContainer.push(obj)
+//     })
+//     console.log(dataContainer)
+//   }
+//   NBA.stats.commonTeamRoster({TeamID: team}).then(function(roster){
+//       const playerIds = roster.commonTeamRoster.map(player => player.playerId);
+//       Promise.all(playerArr(playerIds)).then(data => objArr(data))
+//   })
+// }

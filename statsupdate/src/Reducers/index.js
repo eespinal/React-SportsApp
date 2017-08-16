@@ -5,9 +5,8 @@ import {
   SAVE_PLAYER,TOGGLE_VIEW,
   REMOVE_PLAYER,
   SHOW_TEAM_SEARCH_RESULT,
-  SEARCH_TEAM_INFO,
-  LOAD_PLAYER_LIST,
-  SHOW_PLAYER_LIST} from '../actions';
+  SHOW_PLAYER_LIST
+    } from '../actions';
 
 const initialState = {
   query: '',
@@ -60,15 +59,10 @@ export default(state = initialState, action ) => {
         ...state,
         isDislayingAsRows: !state.isDislayingAsRows
       }
-    case LOAD_PLAYER_LIST:
-      return{
-        ...state,
-        teamId: action.teamId
-      }
     case SHOW_PLAYER_LIST:
       return{
         ...state,
-        teamRoster:action.teamRoster
+        teamRoster: action.data
       }
     default:
       return state;

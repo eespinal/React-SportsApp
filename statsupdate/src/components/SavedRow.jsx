@@ -1,8 +1,7 @@
 import React from 'react';
 
 const SavedRow = ({id,info,stats,index,removePlayer })=> (
-
-      <tbody className="playerTableData">
+      <tbody className="playerTableData" key={id}>
         <tr>
           <th scope="row">{index+1}</th>
           <td className='rowThumb'>
@@ -13,10 +12,9 @@ const SavedRow = ({id,info,stats,index,removePlayer })=> (
           <td>{stats.ast}</td>
           <td>{stats.reb}</td>
           <td>{stats.pie}</td>
-          <td><button className='btn-danger' onClick={removePlayer} data-player-id={id}>Remove</button></td>
+          <td><button className='btn btn-danger' onClick={removePlayer} data-player-id={id}>Remove</button></td>
         </tr>
       </tbody>
-
 
 )
 export default SavedRow;

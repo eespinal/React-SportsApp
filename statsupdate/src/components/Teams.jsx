@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import NBA from 'nba';
-import { searchForTeam } from '../actions';
+// import { searchForTeam } from '../actions';
 import { Link } from 'react-router-dom'
 
 class Teams extends Component{
@@ -14,11 +14,10 @@ class Teams extends Component{
             {
               NBA.teams.map((team,index)=>{
                 const teamstats = this.props.teamstats.find(teamstat => teamstat.teamId === team.teamId)
-                console.log("TEAMSTATS",teamstats)
                 return(
                     index >= 0 ?
                     <div key={index} className="p-2 teamIcons" >
-                      <Link to={`/team/${team.abbreviation}`} data-team-Id={team.teamId}>
+                      <Link to={`/team/${team.teamId}`} data-team-Id={team.teamId}>
                         <img src={`http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG`} alt={team.abbreviation}/>
                       </Link>
                       <ul className="dropdownStats" data-team-name={team.abbreviation} style={{backgroundImage: `url(http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG)`, backgroundSize: '258px 110px', backgroundPosition: 'center left',
@@ -87,7 +86,6 @@ export default Teams;
 //             }
 //           </div>
 //       </div>
-
 
 
 
