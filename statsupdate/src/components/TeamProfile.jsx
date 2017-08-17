@@ -1,16 +1,13 @@
 import React,{Component} from 'react';
-// import {loadPlayerList} from '../actions';
 import PlayerListApp from './PlayerListApp';
 import '../styles/index.css';
 
 class TeamProfile extends Component {
-
-// componentWillReceiveProps() {
-  //this.props.match.params.id '1610612747'
 componentDidMount(){
   let idOfteam =this.props.match.params.id
   console.log(idOfteam)
-  this.props.getRoster(idOfteam)
+  console.log(this.props.getRoster(idOfteam))
+  // this.props.getRoster(idOfteam)
 }
 
 render() {

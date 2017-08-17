@@ -1,32 +1,30 @@
 import React from 'react';
 import PlayerApp from './PlayerApp';
 import Carousel from './Carousel'
-// import SavedCardApp from './SavedCardApp';
-// import SavedRowApp from './SavedRowApp';
-// import TeamProfileApp from './TeamProfileApp';
 import PlayerListApp from './PlayerListApp';
-// import '../helpers/navHelper.js'
 import '../styles/index.css';
-const HomePage = ({onChange, query, player, savedPlayers}) =>(
-    <div className='bucket'>
-      <Carousel />
-      <div className='playerSearchHeading'>
-        <h1> Create Your Player Top</h1>
-        <h5> Just Search and add</h5>
-      </div>
-
-
-        <hr></hr>
-        <div className='d-flex'>
-          <PlayerListApp players={savedPlayers}/>
-          <div className="col-sm-2">
-              <input className='form-control' placeholder='Search' onChange={onChange}></input>
-              <div>
-                {player.id ? <PlayerApp {...player} /> : null}
-              </div>
-          </div>
-        </div>
-
+const HomePage = ({onChange, query, player, savedPlayers}) => (
+  <div className='bucket'>
+    <Carousel/>
+    <div className='playerSearchHeading'>
+      <h1>
+        Create Your Player Top</h1>
+      <h5>
+        Just Search and add</h5>
     </div>
+    <hr></hr>
+    <div className='d-flex'>
+      <PlayerListApp players={savedPlayers}/>
+      <div className="col-sm-3">
+        <input className='form-control' placeholder='Search' onChange={onChange}></input>
+        <div>
+          {player.id
+            ? <PlayerApp {...player}/>
+            : null}
+        </div>
+      </div>
+    </div>
+
+  </div>
 )
 export default HomePage;

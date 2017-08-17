@@ -87,21 +87,3 @@ export const showPlayerList = (data) =>{
     data
   })
 }
-
-// const nbaRosterList = (dispatch,team) => {
-//   const playerArr = (arrOfIds) => {
-//     let statsPromises = arrOfIds.map( item => NBA.stats.playerInfo({PlayerID: item}))
-//     return statsPromises;
-//   }
-//     let dataContainer = []
-//   const objArr = data => {
-//     data.forEach(item =>{ let obj = {id:item.commonPlayerInfo[0].personId,info:item.commonPlayerInfo[0],stats:item.playerHeadlineStats[0]}
-//       dataContainer.push(obj)
-//     })
-//     console.log(dataContainer)
-//   }
-//   NBA.stats.commonTeamRoster({TeamID: team}).then(function(roster){
-//       const playerIds = roster.commonTeamRoster.map(player => player.playerId);
-//       Promise.all(playerArr(playerIds)).then(data => objArr(data))
-//   })
-// }
