@@ -5,7 +5,8 @@ import {
   SAVE_PLAYER,TOGGLE_VIEW,
   REMOVE_PLAYER,
   SHOW_TEAM_SEARCH_RESULT,
-  SHOW_PLAYER_LIST
+  SHOW_PLAYER_LIST,
+  SHOW_PROFILE_PLAYER_DATA
     } from '../actions';
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
   isDislayingAsRows:false,
   teamstats:[],
   teamId:'',
-  teamRoster:[]
+  teamRoster:[],
+  playerProfileInfo:{}
 }
 
 export default(state = initialState, action ) => {
@@ -64,6 +66,14 @@ export default(state = initialState, action ) => {
         ...state,
         teamRoster: action.data
       }
+    case SHOW_PROFILE_PLAYER_DATA:
+      return{
+        ...state,
+        playerProfileInfo: {
+          info:action.info,
+          stats:action.stats
+        }
+      };
     default:
       return state;
   }

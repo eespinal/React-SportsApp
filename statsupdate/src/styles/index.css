@@ -148,4 +148,14 @@ tbody td {
 .compBtn {
   margin-right: 60px; }
 
+.PlayerProfilecontainer {
+  position: absolute;
+  margin-top: 150px; }
+  .PlayerProfilecontainer h3 {
+    text-align: center; }
+  .PlayerProfilecontainer .card {
+    width: 260px; }
+    .PlayerProfilecontainer .card img {
+      width: 260px; }
+
 /*# sourceMappingURL=index.css.map */

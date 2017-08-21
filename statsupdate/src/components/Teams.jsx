@@ -17,7 +17,7 @@ class Teams extends Component{
                 return(
                     index >= 0 ?
                     <div key={index} className="p-2 teamIcons" >
-                      <Link to={`/team/${team.teamId}`} data-team-Id={team.teamId}>
+                      <Link to="#" data-team-Id={team.teamId}>
                         <img src={`http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG`} alt={team.abbreviation}/>
                       </Link>
                       <ul className="dropdownStats" data-team-name={team.abbreviation} style={{backgroundImage: `url(http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG)`, backgroundSize: '258px 110px', backgroundPosition: 'center left',
@@ -39,89 +39,4 @@ class Teams extends Component{
 }
 
 export default Teams;
-// import React from 'react';
-// import NBA from 'nba';
-//
-// const Teams=({onMouseEnter,teamstats}) =>
-//       <div className="d-flex justify-content-between">
-//           <div className="d-flex align-items-start flex-row underline">
-//             {
-//               NBA.teams.map((team,index)=>{
-//                 return(
-//                     index ?
-//                     <div key={index} className="p-2 teamIcons" >
-//                       <a href='#'><img src={`http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG`} alt={team.abbreviation} onMouseEnter={onMouseEnter} data-team-name={team.abbreviation}/></a>
-//                       <ul className="dropdownStats">
-//                         <li>Wins:{teamstats.w}</li>
-//                         <li>Losses:{teamstats.l}</li>
-//                         <li>Season</li>
-//                         <li>Last 10 games</li>
-//                       </ul>
-//                     </div>:null
-//                 )
-//               })
-//             }
-//           </div>
-//       </div>
-// export default Teams;
-
-// export default props =>
-//       <div className="d-flex justify-content-between">
-//           <div className="d-flex align-items-start flex-row underline">
-//             {
-//               NBA.teams.map((team,index,onMouseEnter)=>{
-//                 return(
-//                     index ?
-//                     <div key={index} className="p-2 teamIcons" >
-//                       <a href='#'><img src={`http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG`} alt={team.abbreviation} onmouserenter={ onMouseEnter} data-team-name={team.abbreviation}/></a>
-//                       <ul className="dropdownStats">
-//                         <li>Team Record</li>
-//                         <li>Team Top Player</li>
-//                         <li>Season</li>
-//                         <li>Last 10 games</li>
-//                       </ul>
-//                     </div>:null
-//                 )
-//               })
-//             }
-//           </div>
-//       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // displlays the columns of the teams on left and right side
-  // export default props =>
-  //       <div className="d-flex justify-content-between">
-  //           <div className="d-flex align-items-start flex-column">
-  //             {
-  //               NBA.teams.map((team,index)=>{
-  //                 return(
-  //                     index < 15 ? <div key={index} className="p-2 teamIcons" ><img src={`http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG`} alt={team.abbreviation}/></div>:null
-  //                 )
-  //               })
-  //             }
-  //           </div>
-  //           <div className="d-flex align-items-end flex-column">
-  //             {
-  //               NBA.teams.map((team,index)=>{
-  //                   return(
-  //                       index > 14 ? <div key={index} className="p-2 teamIcons"><img src={`http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/${team.abbreviation}.SVG`} alt={team.abbreviation}/></div>:null
-  //                   )
-  //               })
-  //             }
-  //           </div>
-  //       </div>
+//                      <Link to={`/team/${team.teamId}`} data-team-Id={team.teamId}>

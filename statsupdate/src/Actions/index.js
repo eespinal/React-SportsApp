@@ -7,6 +7,8 @@ export const TOGGLE_VIEW = 'TOGGLE_VIEW';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
 export const LOAD_PLAYER_LIST = 'LOAD_PLAYER_LIST';
 export const SHOW_PLAYER_LIST = 'SHOW_PLAYER_LIST';
+export const GET_PROFILE_PLAYER_DATA = 'GET_PROFILE_PLAYER_DATA';
+export const SHOW_PROFILE_PLAYER_DATA = 'SHOW_PROFILE_PLAYER_DATA';
 
 const nbaApi = (dispatch, searchString) =>{
   let player = NBA.findPlayer(searchString)
@@ -85,5 +87,27 @@ export const showPlayerList = (data) =>{
   return({
     type:SHOW_PLAYER_LIST,
     data
+  })
+}
+
+export const getProfilePlayerData = (dispatch,id) => {
+  nbagetPlayerList(dispatch,id)
+  return({
+    type:GET_PROFILE_PLAYER_DATA
+  })
+}
+
+const nbagetPlayerList = (dispatch,id) => {
+    NBA.stats.playerProfile({PlayerID:'201142'}).then(function(response){
+        dispatch(showProfilePlayerData(response.seasonTotalsRegularSeason,response.careerHighs))
+  })
+}
+
+export const showProfilePlayerData = (info, stats)=>{
+  console.log(info[0],stats[0])
+  return({
+    type:SHOW_PROFILE_PLAYER_DATA,
+    info,
+    stats
   })
 }

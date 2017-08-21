@@ -15,7 +15,7 @@ const HomePage = ({onChange, query, player, savedPlayers}) => (
     <hr></hr>
     <div className='d-flex'>
       <PlayerListApp players={savedPlayers}/>
-      <div className="col-sm-3">
+      <div className="col-sm-2.5">
         <input className='form-control' placeholder='Search' onChange={onChange}></input>
         <div>
           {player.id
