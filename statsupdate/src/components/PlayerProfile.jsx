@@ -7,6 +7,8 @@ class PlayerProfile extends Component{
   }
   render(){
     console.log('PlayerProfileInfo', this.props.PlayerProfileInfo);
+    var playerProfileInfo = this.props.PlayerProfileInfo || {};
+    var infoArray = playerProfileInfo.info || [];
     return(
         <div className=" container PlayerProfilecontainer">
             <h3> Player Stats</h3>
@@ -28,6 +30,22 @@ class PlayerProfile extends Component{
                 <th>Reb</th>
               </tr>
             </thead>
+            <tbody>
+              {infoArray.map((info, index) => (
+                <tr key={index}>
+                  <th className="numero">{index}</th>
+                  <th>Ppg</th>
+                  <th>{info.ast}</th>
+                  <th>{info.reb}</th>
+                  <th>Ppg</th>
+                  <th>Ast</th>
+                  <th>Reb</th>
+                  <th>Ppg</th>
+                  <th>Ast</th>
+                  <th>Reb</th>
+                </tr>
+              ))}
+            </tbody>
           </table>
       </div>
     )
