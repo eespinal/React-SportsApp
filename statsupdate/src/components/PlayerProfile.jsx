@@ -6,6 +6,7 @@ class PlayerProfile extends Component{
     console.log(this.props)
   }
   render(){
+    console.log('PlayerProfileInfo', this.props.PlayerProfileInfo);
     return(
         <div className=" container PlayerProfilecontainer">
             <h3> Player Stats</h3>

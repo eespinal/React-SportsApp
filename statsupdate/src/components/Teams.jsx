@@ -3,6 +3,8 @@ import NBA from 'nba';
 // import { searchForTeam } from '../actions';
 import { Link } from 'react-router-dom'
 
+console.log('NBA', NBA);
+
 class Teams extends Component{
   componentDidMount(){
     this.props.loadData()
@@ -12,7 +14,7 @@ class Teams extends Component{
       <div className="d-flex justify-content-between">
           <div className="d-flex align-items-start flex-row underline">
             {
-              NBA.teams.map((team,index)=>{
+              (NBA.teams || []).map((team,index)=>{
                 const teamstats = this.props.teamstats.find(teamstat => teamstat.teamId === team.teamId)
                 return(
                     index >= 0 ?

@@ -91,10 +91,18 @@ export const showPlayerList = (data) =>{
 }
 
 export const getProfilePlayerData = (dispatch,id) => {
-  nbagetPlayerList(dispatch,id)
-  return({
-    type:GET_PROFILE_PLAYER_DATA
+  // nbagetPlayerList(dispatch,id)
+
+  NBA.stats.playerProfile({ PlayerID: '201142' }).then(function (response) {
+    
+    // @NOTE: action for `showProfilePlayerData` is dispatched when it's resolved inside this promise
+    dispatch(showProfilePlayerData(response.seasonTotalsRegularSeason, response.careerHighs))
   })
+
+  // @NOTE: commenting as the action will depend on the dispatch inside the previous promise
+  // return({
+  //   type:GET_PROFILE_PLAYER_DATA
+  // })
 }
 
 const nbagetPlayerList = (dispatch,id) => {
